@@ -116,7 +116,8 @@ class UserController extends Controller
      ]);
             return $this->redirect(['viewg', 'id' => $model->id]);
         }
-
+$model->password_hash==null;
+$model->passwordconfirm==null;
         return $this->render('create', [
             'model' => $model,
         ]);
