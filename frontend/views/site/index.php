@@ -95,7 +95,7 @@ $this->title = 'WoodProductMarket';
   </div>
 </div>';
 //$cookies1 = Yii::$app->request->cookies;
- if (empty(Yii::$app->request->get('tid'))&&empty(Yii::$app->request->get('q'))){
+ if (Yii::$app->request->get('tid')==false&&Yii::$app->request->get('q')==false){
  echo $show;
         
  }
