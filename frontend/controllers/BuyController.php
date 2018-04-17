@@ -64,6 +64,29 @@ class BuyController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionViewproduct($id)
+    {
+        if (Yii::$app->user->isGuest) {
+             return $this->redirect(Yii::$app->user->loginUrl);
+        }
+        $model=$this->findModel($id);
+        $sql1="SELECT * FROM products p,productpic pd WHERE p.pid=pd.products_pid and p.pid=$model->products_id";
+        try {
+            $rawData1= \yii::$app->db->createCommand($sql1)->queryAll();
+            
+        } catch (\yii\db\Exception $exc) {
+            throw new \yii\web\ConflictHttpException("sql error");
+        }
+        $picall= new \yii\data\ArrayDataProvider([
+            'allModels' => $rawData1,
+            'pagination'=>FALSE
+        ]);
+        
+        return $this->render('viewproduct', [
+            'model' => $model,
+             'picall' => $picall,
+        ]);
+    }
 
     /**
      * Creates a new Buy model.

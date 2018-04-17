@@ -33,12 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'bid',
             'pricein',
                  'bqty',
-            'products.pname',
+            //'products.pname',
             [  
         'label' => 'สินค้า',
         //'value' => 'รหัส '.$model->products->pid.' '.$model->products->pname ,
+                 'format' => 'raw',
                 'value' => function($model){
-                    return 'รหัส '.$model->products->pid.' '.$model->products->pname;
+                       return  Html::a($model->products->pid." ".$model->products->pname, ['buy/viewproduct', 'id' => $model->bid]);
             }
     ],
             //'datetimeabuy',
