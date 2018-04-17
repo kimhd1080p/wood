@@ -1,5 +1,5 @@
 <?php
-
+use yii\web\View;
 /* @var $this yii\web\View */
 
 $this->title = 'WoodProductMarket';
@@ -38,11 +38,75 @@ $this->title = 'WoodProductMarket';
   </div>
 <?php } ?>
    
- 
 
+    
+<?php
+//$cookies = Yii::$app->response->cookies;
+//$cookies->add(new \yii\web\Cookie([
+//        'name' => 'time',
+//        'value' => 'a',
+//        'expire' => time() + 1800,
+//]));
+
+    
+        $this->registerCss("
+            #modal {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 25%;
+    left: 30%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 99999;
+    height: 730px;
+    width: 1100px;
+}
+.modalconent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    width: 80%;
+    padding: 20px;
+}
+");
+
+?>
 </div>
   
   </div>
 </div>
 </div>
-              
+         <?php $show= '<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">แนะนำ</h4>
+      </div>
+      <div class="modal-body">
+        <p><iframe width="560" height="315" src="https://www.youtube.com/embed/F0NvoZBYnTY?Version=3&loop=1&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+
+  </div>
+</div>';
+//$cookies1 = Yii::$app->request->cookies;
+ if (empty(Yii::$app->request->get('tid'))&&empty(Yii::$app->request->get('q'))){
+ echo $show;
+        
+ }
+              $this->RegisterJs ( "
+                  $(document).ready(function(){
+                  $('#myModal').modal();
+                  });
+            document.getElementById('button').onclick = function () {
+        document.getElementById('myModal').style.display = 'none'
+    }
+        
+
+", View::POS_END);
+              ?>    
