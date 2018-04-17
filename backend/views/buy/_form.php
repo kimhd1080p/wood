@@ -1,0 +1,86 @@
+<?php
+
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+ use backend\models\Provinces;
+ use backend\models\Amphures;
+  use backend\models\Products;
+   use backend\models\Districts;
+use kartik\widgets\DepDrop;
+ use backend\models\User;
+/* @var $this yii\web\View */
+/* @var $model backend\models\Buy */
+/* @var $form yii\widgets\ActiveForm */
+?>
+
+<div class="buy-form">
+
+    <?php $form = ActiveForm::begin(); ?>
+<?= $form->field($model, 'products_id')->dropDownList(
+            ArrayHelper::map(Products::find()->where("pstatus != 2")->andWhere("pstatus != 3")->orderBy([
+           'pstatus'=>SORT_ASC,
+           //'username' => SORT_DESC,
+        ])->all(),  'pid',
+           function($model){
+                return $model->pid. ' '.$model->pname;
+            }),['prompt'=>'เลือก']
+           ); ?>
+        <?= $form->field($model, 'user_id')->dropDownList(
+            ArrayHelper::map(User::find()->all(), 'id',
+           function($model){
+                return $model->name.' '.$model->surname;
+            }),['prompt'=>'เลือก']
+           ); ?>
+     <?= $form->field($model, 'pricein')->textInput() ?>
+         <?= $form->field($model, 'bqty')->textInput() ?>
+
+   <?php //echo $form->field($modelde, 'address')->textArea(['maxlength' => true]) ?>
+  
+    <?php //echo $form->field($model, 'provice')->textInput()
+//            ->dropDownList(
+//            ArrayHelper::map(Provinces::find()->asArray()->all(),  'PROVINCE_ID',
+//            'PROVINCE_NAME'),
+//            [
+//                'id'=>'ddl-province',
+//                'prompt'=>'เลือกจังหวัด'
+//]); ?>
+  <?php //echo $form->field($model, 'amphures')->widget(DepDrop::classname(), [
+//            'options'=>['id'=>'ddl-amphur'],
+//            'data'=> [],
+//            'pluginOptions'=>[
+//                'depends'=>['ddl-province'],
+//                'placeholder'=>'เลือกอำเภอ...',
+//                'url'=>Url::to(['/user/get-amphur'])
+//            ]
+//        ]); ?>
+    
+    <?php //echo $form->field($modelde, 'districts_DISTRICT_ID')->widget(DepDrop::classname(), [
+//        'options'=>['id'=>'ddl-district'],
+//           'data' =>[],
+//           'pluginOptions'=>[
+//               'depends'=>['ddl-province', 'ddl-amphur'],
+//               'placeholder'=>'เลือกตำบล...',
+//               'url'=>Url::to(['/user/get-district'])
+//           ]
+//]); ?>
+   
+    
+   
+
+   
+
+    <?php //echo $form->field($modelde, 'zipcode')->textInput(['maxlength' => true]) ?>
+
+    <?php //echo $form->field($modelde, 'tel')->textInput(['maxlength' => true]) ?>
+        
+ 
+    <div class="form-group">
+      
+        <?= Html::submitButton($model->isNewRecord ? 'ยืนยันการซื้อ' : 'แก้ไขการซื้อ', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+</div>
