@@ -57,7 +57,7 @@ class Buy extends \yii\db\ActiveRecord
     {
         return [
             'bid' => 'เลขที่ใบสั่งซื้อ',
-            'pricein' => 'ราคาซื้อ',
+            'pricein' => 'ราคา(ที่ต้องการซื้อ)',
             'datetimeabuy' => 'วันที่ซื้อ',
             'map' => 'สถานที่ส่ง',
             'products_id' => 'สินค้า',

@@ -6,7 +6,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
 
-$this->title = 'เข้าสู่ระบบ';
+$this->title = 'เข้าสู่ระบบ WoodProductMarketManage';
 
 $fieldOptions1 = [
     'options' => ['class' => 'form-group has-feedback'],
@@ -21,7 +21,7 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#">Wood Mart Manage</a>
+        <a href="#">WoodProductMarketManage</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -32,7 +32,7 @@ $fieldOptions2 = [
         <?= $form
             ->field($model, 'username', $fieldOptions1)
             ->label(false)
-            ->textInput(['placeholder' => "อีเมล"]) ?>
+            ->textInput(['placeholder' => "ชื่อผู้ใช้"]) ?>
 
         <?= $form
             ->field($model, 'password', $fieldOptions2)

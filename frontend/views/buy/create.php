@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="panel-body text-center">
        <img src="img/<?= $modelpro->pic ?>"  width="250" height="200" class="img-thumbnail"><br><br>
   รหัสสินค้า: <?= $modelpro->pid ?> <?= $modelpro->pname ?> <br/>
-  จำนวน: <?= $modelpro->qty ?> <?= $modelpro->unitU->uname ?> <br/>
+  จำนวน: <?= $modelpro->qty ?> <?= $modelpro->unit ?> <br/>
  
 <!--  <button type="button" class="btn btn-success">ชื้อ</button>   <button type="button" class="btn btn-info">รายละเอียด</button>-->
  </div>
